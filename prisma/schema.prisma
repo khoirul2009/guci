@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @unique
+  email     String   @unique
+  username  String   @unique
+  name      String?
+  password  String
+  image     String?
+  noTelp    String?
+  role      String   @default("common")
+  point     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  Order     Order[]
+}
+
+model Product {
+  id          String   @id @unique
+  name        String   @db.VarChar(100)
+  price       Float
+  available   Boolean
+  description String
+  imagePath   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
+  Order       Order[]
+}
+
+model Voucher {
+  id         String   @id @unique
+  name       String   @db.VarChar(100)
+  point      Int
+  imagePath  String
+  popularity Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+}
+
+model Post {
+  id            String   @id @unique
+  title         String   @db.VarChar(200)
+  author        String
+  thumbnailPath String
+  category      String   @db.VarChar(30)
+  description   String   @db.Text()
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+}
+
+model Order {
+  id         String   @id @unique
+  userId     String
+  status     String
+  grandTotal Float
+  productId  String
+  quantity   Int
+  fullName   String
+  email      String
+  noWa       String
+  gender     String
+  province   String
+  birthdate  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @default(now())
+  product    Product  @relation(fields: [productId], references: [id])
+  user       User     @relation(fields: [userId], references: [id])
+}

@@ -16,21 +16,130 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Api specs
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Ticket
 
-## Learn More
+Get Tickets
 
-To learn more about Next.js, take a look at the following resources:
+- endpoint : /api/tickets
+- method : GET
+- Authorization :
+  - api-key : "required"
+  - access-token: "not required"
+- Query :
+  - page : number
+  - size : number
+  - search : string
+- Response Body :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "statusText": "success",
+  "page": 1,
+  "size": 10,
+  "data": [
+    {
+      "id": "uuid",
+      "name": "string",
+      "price": 10000,
+      "availability": true,
+      "description": "string",
+      "imagesUrl": "/images/name-images.jpg",
+      "createdAt": 123412314,
+      "updatedAt": 123434123,
+      "tourismId": "uuid"
+    }
+  ]
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Store Tickets
 
-## Deploy on Vercel
+- endpoint : /api/tickets
+- method : POST
+- Authorization :
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+  - api-key : "required"
+  - access-token: "required"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Request Body :
+
+```json
+{
+  "id": "uuid",
+  "name": "string",
+  "price": 100000,
+  "availability": true,
+  "description": "string",
+  "tourismId": "uuid",
+  "imagesUrl": "/images/name-images.jpg"
+}
+```
+
+- Response Body :
+
+```json
+{
+  "statusText": "success",
+  "message": "Ticket success stored"
+}
+```
+
+Update Tickets
+
+- endpoint : /api/tickets/{id}
+- method : PATCH
+- Authorization :
+
+  - api-key : "required"
+  - access-token: "required"
+
+- Params:
+  - id : uuid
+- Request Body :
+
+```json
+{
+  "id": "uuid",
+  "name": "string",
+  "price": 100000,
+  "availability": true,
+  "description": "string",
+  "tourismId": "uuid",
+  "imagesUrl": "/images/name-images.jpg"
+}
+```
+
+- Response Body :
+
+```json
+{
+  "statusText": "success",
+  "message": "Ticket success updated"
+}
+```
+
+Delete Tickets
+
+- endpoint : /api/tickets/{id}
+- method : DELETE
+- Authorization :
+
+  - api-key : "required"
+  - access-token: "required"
+
+- Params:
+
+  - id : uuid
+
+- Response Body :
+
+```json
+{
+  "statusText": "success",
+  "message": "Ticket success deleted"
+}
+```
+
+### Tourims
