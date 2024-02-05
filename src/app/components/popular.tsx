@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/database";
-import Product from "./product";
 import Image from "next/image";
 
 export default async function Popular() {

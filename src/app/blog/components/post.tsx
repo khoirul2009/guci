@@ -1,5 +1,5 @@
-import { Post } from "@prisma/client";
-import Image from "next/image";
+import type { Post } from "@prisma/client";
+
 import Link from "next/link";
 
 export default function PostComponent({

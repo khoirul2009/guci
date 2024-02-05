@@ -3,7 +3,6 @@ import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import FormEditPost from "./components/form-edit-post";
-import Image from "next/image";
 
 export default function EditPost() {
   const dispatch = useDispatch();

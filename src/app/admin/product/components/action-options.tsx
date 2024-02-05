@@ -1,6 +1,6 @@
 "use client";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
-import { supabase } from "@/lib/supabase";
+
 import axios from "axios";
 import Link from "next/link";
 import { useState } from "react";

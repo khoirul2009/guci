@@ -1,4 +1,4 @@
-import { Product } from "@prisma/client";
+import type { Product } from "@prisma/client";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 

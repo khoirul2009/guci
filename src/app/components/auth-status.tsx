@@ -2,8 +2,7 @@ import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 import Logout from "./logout";
-import { BsCart, BsCart2, BsList, BsPeople } from "react-icons/bs";
-import { BiSolidLogOut } from "react-icons/bi";
+import { BsList, BsPeople } from "react-icons/bs";
 import Image from "next/image";
 
 export default async function AuthStatus() {

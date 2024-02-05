@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/database";
-import { Order } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 import { v4 } from "uuid";
 

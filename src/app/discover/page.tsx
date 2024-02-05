@@ -2,9 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import ProductSection from "../product/components/product-section";
-import { useEffect } from "react";
 import { useAppDispatch } from "@/globalRedux/hook";
-import { setQuery } from "@/globalRedux/features/product/productSlice";
 
 export default function Discover() {
   const searchParams = useSearchParams();

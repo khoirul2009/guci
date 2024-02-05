@@ -1,14 +1,13 @@
 "use client";
-import { prisma } from "@/lib/database";
+
 import ActionOptions from "./action-options";
 import { useEffect, useState } from "react";
-import { Product } from "@prisma/client";
+import type { Product } from "@prisma/client";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 
 export default function ProductTable() {
   const [products, setProducts] = useState<Product[]>();

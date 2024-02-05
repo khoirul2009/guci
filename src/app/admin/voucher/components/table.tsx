@@ -1,9 +1,9 @@
 "use client";
 
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
-import { Voucher } from "@prisma/client";
+import type { Voucher } from "@prisma/client";
 import axios from "axios";
-import Image from "next/image";
+
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 

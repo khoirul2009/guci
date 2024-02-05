@@ -1,5 +1,4 @@
 import Banner from "./components/banner";
-import Menu from "./components/menu";
 import Navbar from "./components/navbar";
 import Product from "./components/product";
 import Popular from "./components/popular";
@@ -7,10 +6,7 @@ import { prisma } from "@/lib/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
-import { BsCart, BsList, BsPeople } from "react-icons/bs";
-import Logout from "./components/logout";
 import Drawer from "./components/drawer";
-import Image from "next/image";
 import PostComponent from "./blog/components/post";
 
 export default async function Home() {

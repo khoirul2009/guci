@@ -1,6 +1,6 @@
 "use client";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
-import { Post } from "@prisma/client";
+import type { Post } from "@prisma/client";
 import axios from "axios";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

@@ -1,6 +1,5 @@
 "use client";
-import { Product } from "@prisma/client";
-import Image from "next/image";
+import type { Product } from "@prisma/client";
 import Link from "next/link";
 
 interface Params {

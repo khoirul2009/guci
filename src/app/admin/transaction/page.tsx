@@ -1,6 +1,6 @@
 "use client";
-import { prisma } from "@/lib/database";
-import { User } from "@prisma/client";
+
+import type { User } from "@prisma/client";
 import axios from "axios";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

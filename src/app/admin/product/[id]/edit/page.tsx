@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
 import FormEditProduct from "./components/form-edit-product";
-import Image from "next/image";
 
 export default function EditProduct() {
   const toast = useSelector((state: any) => state.toast);

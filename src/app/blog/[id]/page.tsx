@@ -2,7 +2,6 @@ import { prisma } from "@/lib/database";
 import PostComponent from "../components/post";
 import Drawer from "@/app/components/drawer";
 import Link from "next/link";
-import Image from "next/image";
 
 export default async function DetailBlog({
   params,

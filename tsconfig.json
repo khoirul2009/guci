@@ -27,7 +27,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/api/payment/route.js"
+    "src/app/api/payment/route.js",
+    "src/app/product/[id]/components/form-cart.jsx",
+    "src/app/order/components/button-payment.jsx"
   ],
   "exclude": ["node_modules"]
 }
