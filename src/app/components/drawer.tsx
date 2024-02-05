@@ -3,6 +3,7 @@ import Menu from "./menu";
 import Link from "next/link";
 import { BsCart, BsList, BsPeople } from "react-icons/bs";
 import Logout from "./logout";
+import Image from "next/image";
 
 interface MyComponentProps {
   session: any;
@@ -17,7 +18,13 @@ export default function Drawer({ session, children }: MyComponentProps) {
       <section id="kontak" className="bg-neutral text-center mt-32">
         <div className="bg-primary h-4 mb-5"></div>
         <div className="container mx-auto">
-          <img src="/logo.png" className="mx-auto" width={200} alt="" />
+          <Image
+            src="/logo.png"
+            className="mx-auto"
+            width={200}
+            height={200}
+            alt=""
+          />
           <div className="flex justify-center gap-3">
             <a
               href=""
@@ -284,10 +291,13 @@ export default function Drawer({ session, children }: MyComponentProps) {
                 className="btn btn-ghost btn-circle avatar flex"
               >
                 <div className="w-10 rounded-full">
-                  <img
+                  <Image
+                    alt=""
+                    height={80}
+                    width={80}
                     src={
                       session.user.image
-                        ? session.user.image
+                        ? "/" + session.user.image
                         : "/default-user-profile.png"
                     }
                   />

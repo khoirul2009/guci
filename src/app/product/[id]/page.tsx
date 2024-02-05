@@ -3,6 +3,7 @@ import FormCart from "./components/form-cart";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import Drawer from "@/app/components/drawer";
+import Image from "next/image";
 
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await prisma.product.findUnique({ where: { id: params.id } });

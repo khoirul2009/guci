@@ -2,6 +2,7 @@ import Menu from "./menu";
 import AuthStatus from "./auth-status";
 import Link from "next/link";
 import SearchBar from "./search-bar";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -10,7 +11,7 @@ export default function Navbar() {
     >
       <div className="lg:flex-none flex-1">
         <Link href="/" className="">
-          <img src="/logo.png" alt="" width={80} height={50} />
+          <Image src="/logo.png" alt="" width={80} height={50} />
         </Link>
       </div>
       <div className="flex-none hidden lg:block ">

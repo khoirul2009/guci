@@ -66,7 +66,9 @@ export default function Post() {
           </div>
         </div>
       ) : (
-        posts?.map((post, index) => <PostComponent style="" post={post} />)
+        posts?.map((post, index) => (
+          <PostComponent key={index} style="horizontal" post={post} />
+        ))
       )}
       <div className="join mt-20 w-full">
         <Link
@@ -81,7 +83,11 @@ export default function Post() {
         </Link>
         {Array.from(Array(pages), (e, i) => {
           return (
-            <Link href={`/blog?page=${i + 1}`} className="join-item btn btn-md">
+            <Link
+              key={i}
+              href={`/blog?page=${i + 1}`}
+              className="join-item btn btn-md"
+            >
               {i + 1}
             </Link>
           );

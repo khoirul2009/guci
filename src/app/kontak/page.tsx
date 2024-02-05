@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import Drawer from "../components/drawer";
 import { authOptions } from "@/lib/auth";
+import Image from "next/image";
 
 export default async function Kontak() {
   const session = await getServerSession(authOptions);
@@ -8,7 +9,7 @@ export default async function Kontak() {
     <Drawer session={session}>
       <div className="max-w-5xl mt-32 mx-auto ">
         <div className="flex gap-10">
-          <img src="/holiday.png" alt="" />
+          <Image src="/holiday.png" alt="" width={400} height={400} />
           <div className=" h-full flex-1 flex-col">
             <p className="font-bold">Wisata</p>
             <p>
@@ -18,7 +19,7 @@ export default async function Kontak() {
           </div>
         </div>
         <div className="flex mt-10 gap-10">
-          <img src="/money.png" alt="" />
+          <Image src="/money.png" alt="" width={400} height={400} />
           <div className="">
             <p className="font-bold">Bebas Pilih Metode Pembayaran</p>
             <p>
@@ -28,7 +29,7 @@ export default async function Kontak() {
           </div>
         </div>
         <div className="flex mt-10 gap-10">
-          <img src="/cheap.png" alt="" />
+          <Image src="/cheap.png" alt="" width={400} height={400} />
           <div className="">
             <p className="font-bold">Mudah, Cepat & Aman.</p>
             <p>

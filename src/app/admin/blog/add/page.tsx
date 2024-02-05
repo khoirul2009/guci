@@ -4,6 +4,7 @@ import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import FormAddPost from "./components/form-add-post";
+import Image from "next/image";
 
 export default function AddPost() {
   const toast = useSelector((state: any) => state.toast);

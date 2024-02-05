@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProductTable() {
   const [products, setProducts] = useState<Product[]>();
@@ -57,11 +58,12 @@ export default function ProductTable() {
           {!loading ? (
             products?.map(
               ({ name, price, available, imagePath, id }, index) => (
-                <tr key={index}>
+                <tr key={id}>
                   <th>{index + 1}</th>
                   <td>
                     <img
-                      className="h-[100px] w-[100px]"
+                      height={100}
+                      width={100}
                       src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${imagePath}`}
                       alt=""
                     />
@@ -102,6 +104,7 @@ export default function ProductTable() {
         {Array.from(Array(pages), (e, i) => {
           return (
             <Link
+              key={i}
               href={`/admin/product?page=${i + 1}`}
               className="join-item btn btn-md"
             >

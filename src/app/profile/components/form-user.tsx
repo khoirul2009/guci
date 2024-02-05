@@ -83,8 +83,8 @@ const FormUser: FC<Parameter> = ({ user }) => {
       )}
       {errors ? (
         <div className={`bg-red-200 p-5 text-red-600 space-y-2 rounded-lg`}>
-          {errors.map((error: Error) => (
-            <p>{error.message}</p>
+          {errors.map((error: Error, i: number) => (
+            <p key={i}>{error.message}</p>
           ))}
         </div>
       ) : (

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/database";
 import Product from "./product";
+import Image from "next/image";
 
 export default async function Popular() {
   const array = [1, 2, 3];
@@ -14,9 +15,9 @@ export default async function Popular() {
           {voucher.map(({ imagePath, id, name, point }, index) => (
             <div className="card w-1/3 bg-base-100 shadow-xl mb-5 " key={index}>
               <figure>
-                <img
+                <Image
                   src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${imagePath}`}
-                  alt="Shoes"
+                  alt={name}
                   className="max-h-[250px] my-5"
                 />
               </figure>

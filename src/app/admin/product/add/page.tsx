@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormAddProduct from "./components/form-add-product";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AddProduct() {
   const toast = useSelector((state: any) => state.toast);
@@ -13,7 +14,7 @@ export default function AddProduct() {
         href={"/admin/product"}
         className="mb-5 space-x-3 flex hover:opacity-70 "
       >
-        <img src="/back.png" alt="" width={24} />
+        <Image src="/back.png" alt="" width={24} height={24} />
         <span>Back</span>
       </Link>
       {toast.isShown !== false ? (

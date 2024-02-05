@@ -10,6 +10,8 @@ import Link from "next/link";
 import { BsCart, BsList, BsPeople } from "react-icons/bs";
 import Logout from "./components/logout";
 import Drawer from "./components/drawer";
+import Image from "next/image";
+import PostComponent from "./blog/components/post";
 
 export default async function Home() {
   const product = await prisma.product.findMany({
@@ -61,31 +63,7 @@ export default async function Home() {
         >
           <h3 className="text-center text-3xl font-semibold mb-10">Blog</h3>
           {blog ? (
-            <div>
-              <div className="lg:flex gap-5 flexRow lg:px-5 px-0">
-                <img
-                  src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${blog?.thumbnailPath}`}
-                  className="w-full"
-                />
-                <div className="w-full px-10 mt-5 lg:mt-0">
-                  <p>{blog?.createdAt.toDateString()}</p>
-                  <p className="text-4xl font-bold mt-3 ">{blog?.title}</p>
-
-                  <Link
-                    href={`/blog/${blog.id}`}
-                    className="border-2 border-black py-3 px-8 mt-10 block w-64 text-center hover:bg-black hover:text-white"
-                  >
-                    Read More
-                  </Link>
-                </div>
-              </div>
-              <Link
-                href="/blog"
-                className="border-2 bg-black py-3 px-8 mt-20 block w-64 text-center mx-auto hover:opacity-80 text-white"
-              >
-                See All
-              </Link>
-            </div>
+            <PostComponent post={blog} style="horizontal" />
           ) : (
             <p className="text-center font-medium text-3xl text-gray-500">
               No Content Yet

@@ -29,7 +29,7 @@ export default async function Order() {
             <tbody>
               {order.map(
                 ({ grandTotal, id, status, userId, createdAt }, index) => (
-                  <tr>
+                  <tr key={index}>
                     <th>{index + 1}</th>
                     <td>{id}</td>
                     <td>{createdAt.toDateString()}</td>

@@ -2,6 +2,7 @@ import { prisma } from "@/lib/database";
 import PostComponent from "../components/post";
 import Drawer from "@/app/components/drawer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function DetailBlog({
   params,
@@ -34,7 +35,7 @@ export default async function DetailBlog({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 mt-32 justify-between">
           {posts.map((post, index) => (
-            <PostComponent style="" post={post} />
+            <PostComponent key={index} style="" post={post} />
           ))}
         </div>
 

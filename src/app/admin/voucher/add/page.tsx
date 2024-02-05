@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
 import FormAddVoucher from "./components/form-add-voucher";
+import Image from "next/image";
 
 export default function AddVoucher() {
   const toast = useSelector((state: any) => state.toast);

@@ -2,6 +2,7 @@
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import { Post } from "@prisma/client";
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -149,6 +150,7 @@ export default function Blog() {
         {Array.from(Array(pages), (e, i) => {
           return (
             <Link
+              key={i}
               href={`/admin/blog?page=${i + 1}`}
               className="join-item btn btn-md"
             >

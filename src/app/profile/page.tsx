@@ -4,6 +4,7 @@ import FormUser from "./components/form-user";
 import Link from "next/link";
 import PhotoProfile from "./components/photo-profile";
 import Drawer from "../components/drawer";
+import Image from "next/image";
 
 export default async function Profile() {
   const session = await getServerSession();
@@ -14,12 +15,12 @@ export default async function Profile() {
   return (
     <main className="bg-base-200 min-h-screen items-center flex flex-1 ">
       <Drawer session={session}>
-        <div className="max-w-6xl w-full  lg:mx-auto justify-center  ">
+        <div className="max-w-6xl w-full mt-32  lg:mx-auto justify-center  ">
           <Link
             href={"/"}
             className="mb-5 space-x-3 flex hover:opacity-70 mt-5 "
           >
-            <img src="/back.png" alt="" width={24} />
+            <Image src="/back.png" alt="" width={24} height={24} />
             <span>Back</span>
           </Link>
           <div className=" lg:flex flex-none w-full py-20 bg-base-100 rounded-xl shadow-lg">

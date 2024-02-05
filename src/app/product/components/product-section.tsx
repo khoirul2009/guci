@@ -72,7 +72,10 @@ export default function ProductSection() {
       <div className="grid grid-cols-2 xl:grid-cols-3 gap-5">
         {Array.from(Array(4), (e, i) => {
           return (
-            <div className="card bg-base-100 shadow-xl mb-5 w-full  hover:opacity-90 cursor-pointer">
+            <div
+              key={i}
+              className="card bg-base-100 shadow-xl mb-5 w-full  hover:opacity-90 cursor-pointer"
+            >
               <figure>
                 <div className="bg-base-200 h-[300px] w-full"></div>
               </figure>

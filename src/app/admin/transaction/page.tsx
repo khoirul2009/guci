@@ -104,6 +104,7 @@ export default function Transaction() {
         {Array.from(Array(pages), (e, i) => {
           return (
             <Link
+              key={i}
               href={`/admin/transaction?page=${i + 1}`}
               className="join-item btn btn-md"
             >

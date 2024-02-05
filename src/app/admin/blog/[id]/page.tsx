@@ -3,6 +3,7 @@ import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import FormEditPost from "./components/form-edit-post";
+import Image from "next/image";
 
 export default function EditPost() {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ export default function EditPost() {
         href={"/admin/blog"}
         className="mb-5 space-x-3 flex hover:opacity-70 "
       >
-        <img src="/back.png" alt="" width={24} />
+        <img src={"/back.png"} width={25} alt="background image" />
+
         <span>Back</span>
       </Link>
       {toast.isShown !== false ? (

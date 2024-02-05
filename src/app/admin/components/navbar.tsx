@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <div className="navbar bg-base-100 block fixed ">
@@ -20,7 +23,13 @@ export default function Navbar() {
             ></path>
           </svg>
         </label>
-        <a className="btn btn-ghost normal-case text-xl">Logo App</a>
+        <Link
+          href={"/admin"}
+          className="btn btn-ghost normal-case text-xl flex"
+        >
+          <Image width={50} height={50} src="/logo.png" alt="" />
+          <p>Guci Admin</p>
+        </Link>
       </div>
       <div className="flex-none navbar-end">
         <button className="btn btn-square btn-ghost">

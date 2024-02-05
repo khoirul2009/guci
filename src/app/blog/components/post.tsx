@@ -1,4 +1,5 @@
 import { Post } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function PostComponent({
@@ -18,6 +19,7 @@ export default function PostComponent({
       <img
         src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${post.thumbnailPath}`}
         className="w-full"
+        alt=""
       />
       <div className={style == "horizontal" ? horizontalSubContainer : "mt-5 "}>
         <p>{new Date(post.createdAt).toDateString()}</p>

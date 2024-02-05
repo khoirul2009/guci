@@ -4,6 +4,7 @@ import Link from "next/link";
 import Logout from "./logout";
 import { BsCart, BsCart2, BsList, BsPeople } from "react-icons/bs";
 import { BiSolidLogOut } from "react-icons/bi";
+import Image from "next/image";
 
 export default async function AuthStatus() {
   const session = await getServerSession(authOptions);
@@ -14,10 +15,13 @@ export default async function AuthStatus() {
         <div className="dropdown dropdown-end text-black">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img
+              <Image
+                width={80}
+                height={80}
+                alt=""
                 src={
                   session.user.image
-                    ? session.user.image
+                    ? "/" + session.user.image
                     : "/default-user-profile.png"
                 }
               />

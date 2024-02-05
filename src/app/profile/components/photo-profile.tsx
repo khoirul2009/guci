@@ -2,6 +2,7 @@
 import { setToastState } from "@/globalRedux/features/toast/toastSlice";
 
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
