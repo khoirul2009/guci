@@ -1,25 +1,11 @@
 "use client";
-import { Product } from "@prisma/client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCartPlus, FaMinus, FaPlus } from "react-icons/fa";
 
-type Props = {
-  userId: string;
-  productId: string;
-  productPrice: number;
-  product: Product;
-};
-
-export default function FormCart({
-  userId,
-  productId,
-  productPrice,
-  product,
-}: Props) {
+export default function FormCart({ userId, productId, productPrice, product }) {
   const [count, setCount] = useState(1);
-  const [total, setTotal] = useState(0);
   const [disabled, setDisabled] = useState(false);
   const router = useRouter();
   const [data, setData] = useState({
@@ -55,14 +41,13 @@ export default function FormCart({
       }
       setDisabled(false);
       setCount(0);
-      setTotal(0);
-    } catch (error: any) {
+    } catch (error) {
       alert(error.response.data.message);
       setDisabled(false);
     }
   };
 
-  const handleConfirm = (e: FormEvent<HTMLFormElement>) => {
+  const handleConfirm = (e) => {
     e.preventDefault();
     document.getElementById("confirm").showModal();
   };
@@ -222,6 +207,7 @@ export default function FormCart({
               <button
                 onClick={handleSubmit}
                 type="button"
+                disabled={disabled}
                 className="btn btn-neutral ms-5"
               >
                 Ya, Lanjutkan
