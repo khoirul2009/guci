@@ -1,35 +1,27 @@
 "use client";
 
 import { formatter } from "@/lib/utlis";
-import { Order, User } from "@prisma/client";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function ButtonPayment({
-  order,
-  user,
-}: {
-  order: Order;
-  user: User;
-}) {
+export default function ButtonPayment({ order, user }) {
   const [token, setToken] = useState("");
-  const router = useRouter();
+
   const [snap, setSnap] = useState(false);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (token && snap) {
       window.snap.embed(token, {
-        onSuccess: (result: any) => {
+        onSuccess: (result) => {
           console.log(result);
           window.location.href = `/order/${order.id}`;
           setToken("");
         },
-        onPending: (result: any) => {
+        onPending: (result) => {
           setToken("");
         },
-        onError: (error: any) => {
+        onError: (error) => {
           console.log(error);
           setToken("");
         },
@@ -49,7 +41,7 @@ export default function ButtonPayment({
     let scriptTag = document.createElement("script");
     scriptTag.src = midtransURL;
 
-    const midtransClientKey: string = process.env.MIDTRANS_CLIENT_KEY || "";
+    const midtransClientKey = process.env.MIDTRANS_CLIENT_KEY || "";
     scriptTag.setAttribute("data-client-key", midtransClientKey);
 
     document.body.appendChild(scriptTag);
@@ -88,7 +80,7 @@ export default function ButtonPayment({
       setToken(response.data.token);
       const paymentButton = document.querySelector("#payment-button");
       paymentButton?.classList.add("hidden");
-    } catch (error: any) {
+    } catch (error) {
       alert(error.response.data.message);
     } finally {
       setLoading(false);
@@ -108,7 +100,7 @@ export default function ButtonPayment({
         ""
       )}
       <h2 className="text-2xl">Grand Total</h2>
-      <p>{formatter.format(order!!.grandTotal + order!!.grandTotal * 0.1)} </p>
+      <p>{formatter.format(order.grandTotal + order.grandTotal * 0.1)} </p>
     </div>
   );
 }
