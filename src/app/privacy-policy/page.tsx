@@ -3,7 +3,7 @@ import Drawer from "../components/drawer";
 import { authOptions } from "@/lib/auth";
 
 export default async function PrivacyPolicy() {
-  const session = getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
   return (
     <Drawer session={session}>
       <div className="mt-32">

@@ -2,8 +2,8 @@ import { getServerSession } from "next-auth";
 import Drawer from "../components/drawer";
 import { authOptions } from "@/lib/auth";
 
-export default function TermsConditions() {
-  const session = getServerSession(authOptions);
+export default async function TermsConditions() {
+  const session = await getServerSession(authOptions);
   return (
     <Drawer session={session}>
       <div className="mt-32">

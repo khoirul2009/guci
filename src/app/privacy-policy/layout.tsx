@@ -20,16 +20,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
-
   return (
     <html lang="en" data-theme="mytheme">
-      <Providers>
-        <body className={inter.className}>
-          <Navbar />
-          {children}
-        </body>
-      </Providers>
+      <body className={inter.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
