@@ -37,7 +37,7 @@ export default function ButtonPayment({ order, user }) {
   }, [token, snap]);
 
   useEffect(() => {
-    const midtransURL = "https://app.midtrans.com/snap/v1/transactions";
+    const midtransURL = "https://app.midtrans.com/snap/snap.js";
     let scriptTag = document.createElement("script");
     scriptTag.src = midtransURL;
 
@@ -78,8 +78,6 @@ export default function ButtonPayment({ order, user }) {
         }
       );
       setToken(response.data.token);
-      const paymentButton = document.querySelector("#payment-button");
-      paymentButton?.classList.add("hidden");
     } catch (error) {
       alert(error.response.data.message);
     } finally {

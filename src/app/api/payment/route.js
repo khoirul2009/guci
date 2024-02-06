@@ -6,10 +6,16 @@ export async function POST(req) {
     const body = await req.json();
     const { orderId, name, amount, email, phone } = body;
 
+    const isProduction = true;
+
     const snap = new midtransClient.Snap({
-      isProduction: true,
-      serverKey: process.env.MIDTRANS_SERVER_KEY,
-      clientKey: process.env.MIDTRANS_CLIENT_KEY,
+      isProduction: isProduction,
+      serverKey: isProduction
+        ? process.env.MIDTRANS_SERVER_KEY
+        : process.env.SANDBOX_MIDTRANS_SERVER_KEY,
+      clientKey: isProduction
+        ? process.env.MIDTRANS_CLIENT_KEY
+        : process.env.SANDBOX_MIDTRANS_CLIENT_KEY,
     });
 
     const paramters = {
@@ -33,11 +39,12 @@ export async function POST(req) {
       ],
     };
 
-    const transaction = await snap.createTransaction(paramters);
+    const transaction = await snap.createTransactionToken(paramters);
+
     const dataPayment = {
       response: JSON.stringify(transaction),
     };
-    const token = transaction.token;
+    const token = transaction;
     return NextResponse.json({
       message: "Success",
       dataPayment,
