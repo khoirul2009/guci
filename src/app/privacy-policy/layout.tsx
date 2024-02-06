@@ -23,11 +23,13 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <Providers>
-      <body className={inter.className}>
-        <Navbar />
-        {children}
-      </body>
-    </Providers>
+    <html lang="en" data-theme="mytheme">
+      <Providers>
+        <body className={inter.className}>
+          <Navbar />
+          {children}
+        </body>
+      </Providers>
+    </html>
   );
 }
