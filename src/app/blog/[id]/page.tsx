@@ -12,6 +12,11 @@ export default async function DetailBlog({
 
   const posts = await prisma.post.findMany({
     take: 3,
+    where: {
+      category: {
+        not: "Tourism",
+      },
+    },
     orderBy: { createdAt: "asc" },
   });
 
@@ -23,16 +28,16 @@ export default async function DetailBlog({
           <img
             src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${post?.thumbnailPath}`}
             alt=""
-            className="w-full"
+            className="mx-auto h-[400px]"
           />
         </figure>
         <p className="mt-10">{new Date(post!.createdAt).toDateString()}</p>
         <div
-          className="my-10"
+          className="my-10 text-justify"
           dangerouslySetInnerHTML={{ __html: post!.description }}
         ></div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 mt-32 justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-3 mt-32 gap-10">
           {posts.map((post, index) => (
             <PostComponent key={index} style="" post={post} />
           ))}
