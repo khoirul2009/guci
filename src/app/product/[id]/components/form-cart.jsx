@@ -92,7 +92,7 @@ export default function FormCart({ userId, productId, productPrice, product }) {
       </div>
       <input type="checkbox" id="my_modal_6" className="modal-toggle" />
       <dialog id="my_modal_4" className="modal">
-        <div className="modal-box rounded-none w-5/12 max-w-5xl bg-base-200">
+        <div className="modal-box rounded-none w-full lg:w-5/12 max-w-5xl bg-base-200">
           <h3 className="font-bold text-lg mb-5">Mohon Lengkapi Data</h3>
           <hr className="border" />
           <form onSubmit={handleConfirm}>
@@ -185,7 +185,7 @@ export default function FormCart({ userId, productId, productPrice, product }) {
         </div>
       </dialog>
       <dialog id="confirm" className="modal ">
-        <div className="modal-box rounded-none w-4/12 max-w-5xl border-t-4 border-neutral">
+        <div className="modal-box rounded-none w-10/12 lg:w-4/12  border-t-4 border-neutral">
           <h3 className="font-extrabold text-lg  text-center">Konfirmasi!</h3>
           <div className="bg-slate-100 p-4 rounded-lg text-center mt-5 ">
             <p>E-Tiket anda akan dikirim ke</p>

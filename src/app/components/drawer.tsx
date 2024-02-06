@@ -325,9 +325,9 @@ export default function Drawer({ session, children }: MyComponentProps) {
               </ul>
             </div>
           ) : (
-            <a href="" className="btn btn-primary btn-sm">
+            <Link href="/signin" className="btn btn-primary btn-sm">
               Masuk
-            </a>
+            </Link>
           )}
         </ul>
       </div>
