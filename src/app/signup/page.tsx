@@ -59,7 +59,7 @@ export default function SignUp() {
       ) : (
         <main className="bg-white min-h-screen w-full items-center justify-center">
           <div className="flex ">
-            <div className=" p-7 justify-center w-1/2 min-h-screen flex flex-col  ">
+            <div className=" p-7 justify-center w-full lg:w-1/2 min-h-screen flex flex-col  ">
               <h3 className="text-4xl text-center font-semibold my-2">
                 Buat akun!
               </h3>
@@ -124,9 +124,10 @@ export default function SignUp() {
                   Masuk
                 </Link>
               </p>{" "}
-              */
             </div>
-            <div className="bg-neutral w-1/2"></div>
+            <div className="bg-neutral hidden lg:flex items-center w-1/2">
+              <img src="/guci.png" className="mx-auto " alt="" />
+            </div>
           </div>
         </main>
       )}

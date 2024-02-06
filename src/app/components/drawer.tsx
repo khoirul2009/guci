@@ -27,7 +27,7 @@ export default function Drawer({ session, children }: MyComponentProps) {
           />
           <div className="flex justify-center gap-3">
             <a
-              href=""
+              href="mailto:gucitiket@gmail.com"
               className="text-white w-8 rounded-full bg-white p-2 hover:opacity-80"
             >
               <svg
@@ -73,7 +73,7 @@ export default function Drawer({ session, children }: MyComponentProps) {
               </svg>
             </a>
             <a
-              href=""
+              href="https://facebook.com"
               className="text-white w-8 rounded-full bg-white p-2 hover:opacity-80"
             >
               <svg
@@ -119,7 +119,7 @@ export default function Drawer({ session, children }: MyComponentProps) {
               </svg>
             </a>
             <a
-              href=""
+              href="https://youTube.com"
               className="text-white w-8 rounded-full bg-white p-2 hover:opacity-80"
             >
               <svg
@@ -165,7 +165,7 @@ export default function Drawer({ session, children }: MyComponentProps) {
               </svg>
             </a>
             <a
-              href=""
+              href="https://api.whatsapp.com/send?phone=6285866056488"
               className="text-white w-8 rounded-full bg-white p-2 hover:opacity-80"
             >
               <svg
@@ -194,7 +194,7 @@ export default function Drawer({ session, children }: MyComponentProps) {
               </svg>
             </a>
             <a
-              href=""
+              href="https://www.instagram.com/wisataguci_tegal/"
               className="text-white w-8 rounded-full bg-white p-2 hover:opacity-80"
             >
               <svg
@@ -230,18 +230,24 @@ export default function Drawer({ session, children }: MyComponentProps) {
             </a>
           </div>
           <div className="flex text-white gap-10 justify-center py-8">
-            <a href="" className="text-slate-300 hover:opacity-80">
+            <Link href="/tentang" className="text-slate-300 hover:opacity-80">
               Apa itu Gu-Tix
-            </a>
-            <a href="" className="text-slate-300 hover:opacity-80">
+            </Link>
+            <Link
+              href="/terms-conditions"
+              className="text-slate-300 hover:opacity-80"
+            >
               Syarat & Ketentuan
-            </a>
-            <a href="" className="text-slate-300 hover:opacity-80">
+            </Link>
+            <Link
+              href="/privacy-policy"
+              className="text-slate-300 hover:opacity-80"
+            >
               Kebijakan Privasi
-            </a>
+            </Link>
           </div>
           <p className="text-white font-semibold pb-5">
-            Copyrigth GO Recycle 2023 2023 All rights reversed
+            Copyright GuTix 2023 All rights reserved
           </p>
         </div>
       </section>

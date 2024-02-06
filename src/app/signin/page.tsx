@@ -48,29 +48,38 @@ export default function SignIn() {
       ) : (
         <main className="bg-white min-h-screen w-full items-center justify-center">
           <div className="flex ">
-            <div className=" p-7 justify-center w-1/2 min-h-screen flex flex-col  ">
-              <h3 className="text-4xl text-center font-semibold my-2">
-                Selamat Datang Kembali!
-              </h3>
-              <p className="text-center mt-5">
-                Silahkan masuk dengan akun anda
-              </p>
-              {error ? (
-                <div
-                  className={`bg-red-200 p-5 text-red-600  rounded-lg flex justify-between`}
-                >
-                  <p>{error}</p>
-                  <span
-                    className="font-semibold cursor-pointer hover:opacity-80"
-                    onClick={() => setError(null)}
+            <div className="   w-full  lg:w-1/2 min-h-screen   ">
+              <Link href="/">
+                <img src="/logo.png" width={100} height={100} alt="" />
+              </Link>
+
+              <div className="flex flex-col justify-center p-9">
+                <h3 className="text-4xl text-center font-semibold my-2">
+                  Selamat Datang Kembali!
+                </h3>
+                <p className="text-center mt-5">
+                  Silahkan masuk dengan akun anda
+                </p>
+                {error ? (
+                  <div
+                    className={`bg-red-200 p-5 text-red-600  rounded-lg flex justify-between`}
                   >
-                    X
-                  </span>
-                </div>
-              ) : (
-                ""
-              )}
-              <form onSubmit={handleSubmit} className="max-w-3xl mx-auto">
+                    <p>{error}</p>
+                    <span
+                      className="font-semibold cursor-pointer hover:opacity-80"
+                      onClick={() => setError(null)}
+                    >
+                      X
+                    </span>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <form
+                onSubmit={handleSubmit}
+                className="max-w-3xl mx-5 lg:mx-auto"
+              >
                 <input
                   id="email"
                   type="email"
@@ -106,7 +115,9 @@ export default function SignIn() {
                 </Link>
               </p>
             </div>
-            <div className="bg-neutral w-1/2"></div>
+            <div className="bg-neutral hidden lg:flex items-center w-1/2">
+              <img src="/guci.png" className="mx-auto " alt="" />
+            </div>
           </div>
         </main>
       )}
