@@ -13,11 +13,13 @@ export default function FormEditPost() {
     author: string;
     thumbnail: any;
     description: string;
+    category: string;
   }>({
     title: "",
     author: "",
     thumbnail: null,
     description: "",
+    category: "",
   });
   const [disabled, setDisabled] = useState(false);
 
@@ -44,6 +46,7 @@ export default function FormEditPost() {
           author: response.data.data.author,
           description: response.data.data.description,
           thumbnail: null,
+          category: response.data.category,
         });
       }
     } catch (error: any) {
@@ -82,6 +85,7 @@ export default function FormEditPost() {
       }
       setDisabled(false);
     } catch (error: any) {
+      console.log(error);
       dispatch(
         setToastState({ isShown: true, message: error.message, type: "error" })
       );
@@ -104,7 +108,22 @@ export default function FormEditPost() {
         name="author"
         value={formData.author}
       />
+      <label htmlFor="" className="label font-medium">
+        Category
+      </label>
 
+      <select
+        className="select select-bordered w-full "
+        defaultValue={formData.category}
+        onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+      >
+        <option disabled selected>
+          Select category post
+        </option>
+
+        <option value="Tourism">Tourism</option>
+        <option value="Blog">Blog</option>
+      </select>
       <label htmlFor="thumbnail" className="label font-medium">
         Thumbnail
       </label>

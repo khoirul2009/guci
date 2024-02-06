@@ -28,7 +28,7 @@ export default function Navbar() {
           className="btn btn-ghost normal-case text-xl flex"
         >
           <Image width={50} height={50} src="/logo.png" alt="" />
-          <p>Guci Admin</p>
+          <p>Gu-Tix Admin</p>
         </Link>
       </div>
       <div className="flex-none navbar-end">

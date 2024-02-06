@@ -37,7 +37,7 @@ export default function ButtonPayment({ order, user }) {
   }, [token, snap]);
 
   useEffect(() => {
-    const midtransURL = "https://app.sandbox.midtrans.com/snap/snap.js";
+    const midtransURL = "https://app.midtrans.com/snap/v1/transactions";
     let scriptTag = document.createElement("script");
     scriptTag.src = midtransURL;
 

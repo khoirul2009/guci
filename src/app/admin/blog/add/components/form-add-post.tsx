@@ -99,7 +99,7 @@ export default function FormAddPost() {
         <option disabled selected>
           Select category post
         </option>
-        <option value="Toursim">Toursim</option>
+        <option value="Tourism">Tourism</option>
         <option value="Blog">Blog</option>
       </select>
 

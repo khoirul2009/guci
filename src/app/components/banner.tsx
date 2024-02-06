@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default async function banner() {
   const tourism = await prisma.post.findMany({
-    where: { category: "Toursm" },
+    where: { category: "Tourism" },
   });
   return (
     <div className="carousel w-full rounded-xl">
@@ -14,7 +14,7 @@ export default async function banner() {
           className="carousel-item relative w-full"
         >
           <a href="" className="w-full">
-            <Image
+            <img
               src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${thumbnailPath}`}
               className="w-full h-[350px]"
               alt=""
