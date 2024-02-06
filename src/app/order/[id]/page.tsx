@@ -23,7 +23,7 @@ export default async function OrderDetail({
 
   return (
     <Drawer session={session}>
-      <div className="mt-20 max-w-7xl mx-auto flex-col lg:flex flex-none gap-5">
+      <div className="mt-20 max-w-7xl mx-auto flex-col lg:flex-row flex gap-5">
         {order?.status !== "paid" ? (
           <div className="w-full lg:w-3/5 mx-auto shadow-md p-8 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Pembayaran</h1>
