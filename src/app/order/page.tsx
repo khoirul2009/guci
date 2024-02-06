@@ -12,7 +12,7 @@ export default async function Order() {
   });
   return (
     <Drawer session={session}>
-      <div className="max-w-4xl mt-24 mx-5 lg:mx-auto">
+      <div className="max-w-4xl mt-24 mx-5 lg:mx-auto min-h-screen">
         <h1 className="text-3xl mb-5 font-medium">Order</h1>
         <div className="overflow-x-auto">
           <table className="table">
