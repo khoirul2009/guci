@@ -21,9 +21,25 @@ export default async function OrderDetail({
     where: { id: session?.user.id },
   });
 
+  if (order == null) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="space-y-5">
+          <img
+            height={300}
+            src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
+            alt="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
+          />
+          <p className="text-center text-xl">Order Not Found!</p>
+          <p className="text-center">Please check the order-id</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Drawer session={session}>
-      <div className="mt-20 max-w-7xl mx-auto flex-col lg:flex-row flex gap-5">
+      <div className="mt-20 max-w-7xl mx-auto flex-col-reverse lg:flex-row flex gap-5">
         {order?.status !== "paid" ? (
           <div className="w-full lg:w-3/5 mx-auto shadow-md p-8 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">Pembayaran</h1>
@@ -77,7 +93,7 @@ export default async function OrderDetail({
 
             <div className="mb-4">
               <p className="text-gray-600">Status:</p>
-              <p className="font-medium capitalize">{order?.status}</p>
+              <p className="font-medium capitalize">{order.status}</p>
             </div>
             <hr />
 

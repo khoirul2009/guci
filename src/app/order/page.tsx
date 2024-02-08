@@ -10,6 +10,7 @@ export default async function Order() {
   const order = await prisma.order.findMany({
     where: { userId: session?.user.id },
   });
+
   return (
     <Drawer session={session}>
       <div className="max-w-4xl mt-24 mx-5 lg:mx-auto min-h-screen">

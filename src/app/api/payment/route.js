@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { orderId, name, amount, email, phone } = body;
+    const { order, name, amount, email, phone } = body;
 
     const snap = new midtransClient.Snap({
       isProduction: true,
@@ -14,7 +14,7 @@ export async function POST(req) {
 
     const paramters = {
       transaction_details: {
-        order_id: orderId,
+        order_id: order.id,
         gross_amount: amount,
       },
       customer_details: {
@@ -22,6 +22,16 @@ export async function POST(req) {
         email,
         phone,
       },
+      item_details: [
+        {
+          id: order.product.id,
+          price: order.product.price + order.product.price * 0.1,
+          quantity: order.quantity,
+          name: order.product.name,
+          merchant_name: "Gu-Tix",
+          url: "https://gu-tix.vercel.app/product/" + order.product.id,
+        },
+      ],
       enabled_payments: [
         "bca_va",
         "bni_va",

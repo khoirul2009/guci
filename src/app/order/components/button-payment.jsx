@@ -12,17 +12,28 @@ export default function ButtonPayment({ order, user }) {
 
   useEffect(() => {
     if (token && snap) {
+      embed(token);
+      setToken("");
+    } else if (snap) {
+      const localToken = localStorage.getItem(order.id);
+      embed(localToken);
+    }
+  }, [snap, token]);
+
+  async function embed(token) {
+    setTimeout(() => {
       window.snap.embed(token, {
         onSuccess: (result) => {
           console.log(result);
-          window.location.href = `/order/${order.id}`;
           setToken("");
         },
         onPending: (result) => {
+          localStorage.setItem(order.id, token);
           setToken("");
         },
-        onError: (error) => {
-          console.log(error);
+        onError: function (result) {
+          console.log("error");
+          console.log(result);
           setToken("");
         },
         onClose: () => {
@@ -31,10 +42,8 @@ export default function ButtonPayment({ order, user }) {
         },
         embedId: "snap-container",
       });
-
-      setToken("");
-    }
-  }, [token, snap]);
+    }, 500);
+  }
 
   useEffect(() => {
     const midtransURL = "https://app.midtrans.com/snap/snap.js";
@@ -54,7 +63,8 @@ export default function ButtonPayment({ order, user }) {
   }, []);
 
   useEffect(() => {
-    if (snap == true && order.status == "unpaid") {
+    const localToken = localStorage.getItem(order.id);
+    if (snap == true && order.status == "unpaid" && localToken == null) {
       handlePay();
     }
   }, [snap]);
@@ -65,7 +75,7 @@ export default function ButtonPayment({ order, user }) {
       const response = await axios.post(
         "/api/payment",
         {
-          orderId: order.id,
+          order: order,
           name: user.name,
           amount: order.grandTotal + order.grandTotal * 0.1,
           email: user.email,

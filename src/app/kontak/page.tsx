@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import Drawer from "../components/drawer";
 import { authOptions } from "@/lib/auth";
+import FormContact from "./components/form-contact";
 
 export default async function Kontak() {
   const session = await getServerSession(authOptions);
@@ -28,27 +29,7 @@ export default async function Kontak() {
             <h2 className="text-center  mb-10 text-xl font-bold">
               Hubungi Kami
             </h2>
-            <form action="" className="mx-auto max-w-md w-full space-y-3">
-              <input
-                type="text"
-                placeholder="Name"
-                className="input   input-bordered w-full "
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                className="input   input-bordered w-full "
-              />
-              <textarea
-                name="Komentar"
-                className="input input-bordered w-full h-[200px]"
-                id=""
-                placeholder="Komentar"
-                cols={30}
-                rows={10}
-              ></textarea>
-              <button className="btn btn-primary">Send</button>
-            </form>
+            <FormContact />
           </div>
         </div>
       </div>
