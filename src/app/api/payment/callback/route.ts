@@ -1,11 +1,11 @@
 import { prisma } from "@/lib/database";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import chromium from "@sparticuz/chromium";
 import hbs from "handlebars";
 import fs from "fs-extra";
 import path from "path";
 import puppeteer from "puppeteer-core";
+import Chromium from "chrome-aws-lambda";
 
 const compile = async function name(templateName: string, order: any) {
   hbs.registerHelper("each", function (n, block) {
@@ -34,12 +34,13 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // if (transaction_status !== "settlement") {
+    //   return NextResponse.json({}, { status: 200 });
+    // }
+
     const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(
-        "https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar"
-      ),
+      args: Chromium.args,
+      executablePath: await Chromium.executablePath,
       headless: true,
     });
     const page = await browser.newPage();
@@ -48,7 +49,7 @@ export async function POST(req: NextRequest) {
     await page.setContent(content);
 
     const pdf = await page.pdf({
-      format: "A5",
+      format: "a5",
       printBackground: true,
     });
 
@@ -86,6 +87,8 @@ export async function POST(req: NextRequest) {
         }
       }
     );
+
+    await browser.close();
 
     return NextResponse.json({}, { status: 200 });
   } catch (error) {
