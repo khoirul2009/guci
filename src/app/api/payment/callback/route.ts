@@ -2,9 +2,13 @@ import { prisma } from "@/lib/database";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium-min";
 import hbs from "handlebars";
 import fs from "fs-extra";
 import path from "path";
+
+const chromiumPack =
+  "https://github.com/Sparticuz/chromium/releases/download/v121.0.0/chromium-v121.0.0-pack.tar";
 
 const compile = async function name(templateName: string, order: any) {
   hbs.registerHelper("each", function (n, block) {
@@ -36,7 +40,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(chromiumPack),
+      headless: true,
+    });
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
 
