@@ -4,8 +4,7 @@ import nodemailer from "nodemailer";
 import hbs from "handlebars";
 import fs from "fs-extra";
 import path from "path";
-import puppeteer from "puppeteer-core";
-import Chromium from "chrome-aws-lambda";
+import puppeteer from "puppeteer-serverless";
 
 const compile = async function name(templateName: string, order: any) {
   hbs.registerHelper("each", function (n, block) {
@@ -38,11 +37,7 @@ export async function POST(req: NextRequest) {
     //   return NextResponse.json({}, { status: 200 });
     // }
 
-    const browser = await puppeteer.launch({
-      args: Chromium.args,
-      executablePath: await Chromium.executablePath,
-      headless: true,
-    });
+    const browser = await puppeteer.launch({});
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
 
