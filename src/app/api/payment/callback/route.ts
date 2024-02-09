@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
         attachments: [
           {
             filename: `${order.id}.pdf`,
-            path: `/tmp/generated-pdf/${order?.id}.pdf`,
+            content: fs.readFileSync(`/tmp/generated-pdf/${order?.id}.pdf`),
           },
         ],
       },
