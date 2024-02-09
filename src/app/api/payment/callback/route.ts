@@ -89,8 +89,6 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    await browser.close();
-
     return NextResponse.json({}, { status: 200 });
   } catch (error) {
     console.error(error);
