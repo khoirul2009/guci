@@ -47,9 +47,8 @@ export async function POST(req: NextRequest) {
 
     await page.setContent(content);
 
-    await page.pdf({
-      path: `/tmp/generated-pdf/${order?.id}.pdf`,
-      format: "a5",
+    const pdf = await page.pdf({
+      format: "A5",
       printBackground: true,
     });
 
@@ -75,7 +74,7 @@ export async function POST(req: NextRequest) {
         attachments: [
           {
             filename: `${order.id}.pdf`,
-            content: fs.readFileSync(`/tmp/generated-pdf/${order?.id}.pdf`),
+            content: pdf,
           },
         ],
       },
