@@ -21,9 +21,6 @@ const compile = async function name(templateName: string, order: any) {
   return hbs.compile(html)(order);
 };
 
-const attachmentFilePath = (fileName: string) =>
-  path.join(process.cwd(), "", `generated-pdf/${fileName}`);
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -51,7 +48,7 @@ export async function POST(req: NextRequest) {
     await page.setContent(content);
 
     await page.pdf({
-      path: `generated-pdf/${order?.id}.pdf`,
+      path: `/tmp/generated-pdf/${order?.id}.pdf`,
       format: "a5",
       printBackground: true,
     });
@@ -78,13 +75,16 @@ export async function POST(req: NextRequest) {
         attachments: [
           {
             filename: `${order.id}.pdf`,
-            path: attachmentFilePath(`${order.id}.pdf`),
+            path: `/tmp/generated-pdf/${order?.id}.pdf`,
           },
         ],
       },
       (err, info) => {
         if (err) console.log(err);
-        else console.log(info);
+        else {
+          console.log(info);
+          fs.unlinkSync(`/tmp/generated-pdf/${order?.id}.pdf`);
+        }
       }
     );
 
