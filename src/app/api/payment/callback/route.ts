@@ -34,9 +34,9 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // if (transaction_status !== "settlement") {
-    //   return NextResponse.json({}, { status: 200 });
-    // }
+    if (transaction_status !== "settlement") {
+      return NextResponse.json({}, { status: 200 });
+    }
 
     const browser = await puppeteer.launch({
       args: Chromium.args,
