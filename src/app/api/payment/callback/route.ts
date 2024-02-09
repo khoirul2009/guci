@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     await page.pdf({
       path: `generated-pdf/${order?.id}.pdf`,
-      format: "A5",
+      format: "a5",
       printBackground: true,
     });
 
