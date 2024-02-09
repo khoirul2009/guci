@@ -1,10 +1,11 @@
 import { prisma } from "@/lib/database";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
-import chromium from "chrome-aws-lambda";
+import chromium from "@sparticuz/chromium";
 import hbs from "handlebars";
 import fs from "fs-extra";
 import path from "path";
+import puppeteer from "puppeteer-core";
 
 const compile = async function name(templateName: string, order: any) {
   hbs.registerHelper("each", function (n, block) {
@@ -36,12 +37,11 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const browser = await chromium.puppeteer.launch({
+    const browser = await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
+      executablePath: await chromium.executablePath(),
+      headless: true,
     });
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
