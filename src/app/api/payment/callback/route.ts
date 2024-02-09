@@ -39,10 +39,9 @@ export async function POST(req: NextRequest) {
     }
 
     const browser = await puppeteer.launch({
-      headless: false,
-      executablePath:
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      args: ["--app-shell-host-window-size=1600x1239"],
+      headless: true,
+      executablePath: await Chromium.executablePath(),
+      args: Chromium.args,
     });
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
@@ -82,9 +81,11 @@ export async function POST(req: NextRequest) {
           ],
         },
         (err, info) => {
-          if (err) console.log(err);
-          else {
-            console.log(info);
+          if (err) {
+            console.error(err);
+            reject(err);
+          } else {
+            resolve(info);
           }
         }
       );
