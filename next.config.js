@@ -15,6 +15,16 @@ const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ["puppeteer-core"],
   },
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    // Important: return the modified config
+    if (isServer) {
+      config.externals = ["@sparticuz/chromium", ...config.externals];
+    }
+    return config;
+  },
 };
 
 module.exports = nextConfig;
