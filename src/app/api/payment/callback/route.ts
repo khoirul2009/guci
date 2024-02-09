@@ -2,6 +2,7 @@ import { prisma } from "@/lib/database";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import puppeteer from "puppeteer";
+import chromium from "chrome-aws-lambda";
 import hbs from "handlebars";
 import fs from "fs-extra";
 import path from "path";
@@ -36,7 +37,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    const browser = await puppeteer.launch();
+    const browser = await chromium.puppeteer.launch();
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
 
