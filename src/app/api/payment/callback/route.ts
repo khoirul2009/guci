@@ -39,10 +39,10 @@ export async function POST(req: NextRequest) {
     }
 
     const browser = await puppeteer.launch({
-      args: Chromium.args,
-      executablePath: await Chromium.executablePath(),
-      headless: true,
-      defaultViewport: Chromium.defaultViewport,
+      headless: false,
+      executablePath:
+        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      args: ["--app-shell-host-window-size=1600x1239"],
     });
     const page = await browser.newPage();
     const content = await compile("template_invoice", order);
@@ -67,27 +67,28 @@ export async function POST(req: NextRequest) {
       service: "Gmail",
     });
 
-    transporter.sendMail(
-      {
-        from: process.env.EMAIL,
-        to: order.email,
-        subject: `Invoice & Ticket from Gu-Tix`,
-        text: "Terima kasih telah memilih Gu-Tix sebagai tempat pembelian tiket onlineuntuk wisata Guci semoga liburan anda menyenangkan.",
-        attachments: [
-          {
-            filename: `${order.id}.pdf`,
-            content: pdf,
-          },
-        ],
-      },
-      (err, info) => {
-        if (err) console.log(err);
-        else {
-          console.log(info);
-          fs.unlinkSync(`/tmp/generated-pdf/${order?.id}.pdf`);
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(
+        {
+          from: process.env.EMAIL,
+          to: order.email,
+          subject: `Invoice & Ticket from Gu-Tix`,
+          text: "Terima kasih telah memilih Gu-Tix sebagai tempat pembelian tiket onlineuntuk wisata Guci semoga liburan anda menyenangkan.",
+          attachments: [
+            {
+              filename: `${order.id}.pdf`,
+              content: pdf,
+            },
+          ],
+        },
+        (err, info) => {
+          if (err) console.log(err);
+          else {
+            console.log(info);
+          }
         }
-      }
-    );
+      );
+    });
 
     return NextResponse.json({}, { status: 200 });
   } catch (error) {
