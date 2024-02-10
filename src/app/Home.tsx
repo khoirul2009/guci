@@ -1,6 +1,7 @@
 import Banner from "./components/banner";
 import Navbar from "./components/navbar";
 import Product from "./components/product";
+import Popular from "./components/popular";
 import { prisma } from "@/lib/database";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
@@ -43,7 +44,14 @@ export default async function Home() {
             ))}
           </div>
         </section>
-
+        {/* Rekomendasi */}
+        <section
+          id="recomendation"
+          className="w-full container mx-auto px-5 lg:px-0 mt-5"
+        >
+          <Popular email={session?.user.email} />
+        </section>
+        {/* End Rekomendasi */}
         {/* Popular */}
         <section
           id="blog"

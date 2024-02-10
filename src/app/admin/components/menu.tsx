@@ -30,17 +30,6 @@ export default function Menu() {
 
       <li className="flex items-center space-x-2 ">
         <Link
-          href="/admin/voucher"
-          className="flex items-center space-x-2 w-full btn btn-ghost justify-start"
-        >
-          <span>
-            <BsTagFill />
-          </span>
-          <p>Voucher</p>
-        </Link>
-      </li>
-      <li className="flex items-center space-x-2 ">
-        <Link
           href="/admin/blog"
           className="flex items-center space-x-2 w-full btn btn-ghost justify-start"
         >

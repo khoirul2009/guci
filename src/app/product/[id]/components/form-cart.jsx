@@ -71,6 +71,7 @@ export default function FormCart({ userId, productId, productPrice, product }) {
               className="input input-bordered w-[70px]"
               value={count}
               min={1}
+              readOnly={true}
             />
             <button
               type="button"
