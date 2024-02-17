@@ -39,7 +39,7 @@ export default async function DetailBlog({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 mt-32 gap-10">
           {posts.map((post, index) => (
-            <PostComponent key={index} style="" post={post} />
+            <PostComponent key={index} style="vertical" post={post} />
           ))}
         </div>
 

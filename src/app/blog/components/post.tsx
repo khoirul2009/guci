@@ -18,7 +18,7 @@ export default function PostComponent({
     >
       <img
         src={`https://hcnuxswybozwzvullpzu.supabase.co/storage/v1/object/public/upload-images/${post.thumbnailPath}`}
-        className="w-full"
+        className={style == "vertical" ? "w-full " : "w-full lg:w-1/2"}
         alt=""
       />
       <div className={style == "horizontal" ? horizontalSubContainer : "mt-5 "}>
