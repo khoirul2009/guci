@@ -11,9 +11,9 @@ export default function Product() {
   return (
     <div className="bg-white m-10 p-10 rounded-lg shadow-md max-w-5xl mx-auto">
       <h2 className="text-lg font-medium mb-5">Product Page - Admin</h2>
-      <div className="overflow-x-auto">
-        <ProductTable />
-      </div>
+
+      <ProductTable />
+
       {toast.isShown !== false ? (
         <div className="toast toast-bottom toast-center">
           <div

@@ -45,51 +45,62 @@ export default function Transaction() {
     }
   };
   return (
-    <div className="max-w-5xl mx-auto bg-white mt-10 p-10 rounded-lg shadow-md">
+    <div className="max-w-6xl mx-auto bg-white mt-10 p-10 rounded-lg shadow-md">
       <h1 className="text-lg font-medium mb-5">Transaction - Admin Page</h1>
-      <table className="table">
-        {/* head */}
-        <thead>
-          <tr>
-            <th></th>
-            <th>Order ID</th>
-            <th>Order Date</th>
-            <th>User </th>
-            <th>GrandTotal</th>
-            <th>no Wa</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {orders?.map(
-            (
-              { grandTotal, id, status, userId, createdAt, user, noWa, email },
-              index
-            ) => (
-              <tr key={index}>
-                <th>{index + 1}</th>
-                <td>{id}</td>
-                <td>{new Date(createdAt).toLocaleDateString("id-ID")}</td>
-                <td>{user.name}</td>
-                <td>{grandTotal}</td>
-                <td>{noWa}</td>
-                <td>{email}</td>
-                <td className="text-medium capitalize">{status}</td>
-                <td>
-                  <Link
-                    href={`/order/${id}`}
-                    className="btn btn-sm btn-success"
-                  >
-                    Detail
-                  </Link>
-                </td>
-              </tr>
-            )
-          )}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Order ID</th>
+              <th>Order Date</th>
+              <th>User </th>
+              <th>GrandTotal</th>
+              <th>no Wa</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {orders?.map(
+              (
+                {
+                  grandTotal,
+                  id,
+                  status,
+                  userId,
+                  createdAt,
+                  user,
+                  noWa,
+                  email,
+                },
+                index
+              ) => (
+                <tr key={index}>
+                  <th>{index + 1}</th>
+                  <td>{id}</td>
+                  <td>{new Date(createdAt).toLocaleDateString("id-ID")}</td>
+                  <td>{user.name}</td>
+                  <td>{grandTotal}</td>
+                  <td>{noWa}</td>
+                  <td>{email}</td>
+                  <td className="text-medium capitalize">{status}</td>
+                  <td>
+                    <Link
+                      href={`/order/${id}`}
+                      className="btn btn-sm btn-success"
+                    >
+                      Detail
+                    </Link>
+                  </td>
+                </tr>
+              )
+            )}
+          </tbody>
+        </table>
+      </div>
       <div className="join mt-10">
         <Link
           href={

@@ -20,7 +20,8 @@ export default function Post() {
 
   useEffect(() => {
     getPost();
-  }, []);
+  }, [page]);
+
   async function getPost() {
     setIsFetch(true);
     try {

@@ -20,7 +20,7 @@ export default function Blog() {
 
   useEffect(() => {
     getPost();
-  }, []);
+  }, [page]);
   async function getPost() {
     setIsFetch(true);
     try {
